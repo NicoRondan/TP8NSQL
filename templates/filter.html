@@ -1,0 +1,17 @@
+<form action="/" method="POST">
+    <div class="form-group">
+        <select name="types" class="form-control">
+            {% if option %}
+                <option selected="true" disabled="disabled">{{option}}</option>
+            {% else %}
+                <option selected="true" disabled="disabled">Select a Type of Restaurant</option>
+            {% endif %}
+            {% for type in types %}
+                <option value="{{type}}">{{type}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block mt-4">
+        Filter
+    </button>
+</form>

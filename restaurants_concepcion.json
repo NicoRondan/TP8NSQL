@@ -1,0 +1,223 @@
+[
+    {
+        "address": {
+            "coord": [
+                "-58.235354",
+                "-32.479710"
+            ],
+            "street": "Estrada 838",
+            "zipcode": "3260"
+        },
+        "borough": "Concepción del Uruguay",
+        "cuisine": "American",
+        "name": "7 Colinas"
+    },
+    {
+        "address": {
+            "coord": [
+                "-58.233923",
+                "-32.480520"
+            ],
+            "street": "Artusi 755",
+            "zipcode": "3260"
+        },
+        "borough": "Concepción del Uruguay",
+        "cuisine": "American",
+        "name": "Drakkar"
+    },
+    {
+        "address": {
+            "coord": [
+                "-58.270980",
+                "-32.486480"
+            ],
+            "street": "Posadas 2703",
+            "zipcode": "3260"
+        },
+        "borough": "Concepción del Uruguay",
+        "cuisine": "American",
+        "name": "Cerveza Artesanal Biguá"
+    },
+    {
+        "address": {
+            "coord": [
+                "-58.237961",
+                "-32.481128"
+            ],
+            "street": "Artusi 998",
+            "zipcode": "3260"
+        },
+        "borough": "Concepción del Uruguay",
+        "cuisine": "American",
+        "name": "Cerveza Träctor"
+    },
+    {
+        "address": {
+            "coord": [
+                "-58.232691",
+                "-32.481973"
+            ],
+            "street": "25 de Mayo 181",
+            "zipcode": "3260"
+        },
+        "borough": "Concepción del Uruguay",
+        "cuisine": "American",
+        "name": "Cerveza artesanal Ambar"
+    },
+    {
+        "address": {
+            "coord": [
+                "-58.227596", 
+                "-32.482234"
+            ],
+            "street": "Rocamora 409",
+            "zipcode": "3260"
+        },
+        "borough": "Concepción del Uruguay",
+        "cuisine": "American",
+        "name": "La Taverna"
+    },
+    {
+        "address": {
+            "coord": [
+                "-58.233207", 
+                "-32.483791"
+            ],
+            "street": "Justo José de Urquiza 50",
+            "zipcode": "3260"
+        },
+        "borough": "Concepción del Uruguay",
+        "cuisine": "American",
+        "name": "Grow Brewery"
+    },
+    {
+        "address": {
+            "coord": [
+                "-58.233314",
+                "-32.487013"
+            ],
+            "street": "España 160",
+            "zipcode": "3260"
+        },
+        "borough": "Concepción del Uruguay",
+        "cuisine": "American",
+        "name": "Mamma Mia"
+    },
+    {
+        "address": {
+            "coord": [
+                "-58.232925",
+                "-32.485475"
+            ],
+            "street": "J de S Martín 763",
+            "zipcode": "3260"
+        },
+        "borough": "Concepción del Uruguay",
+        "cuisine": "American",
+        "name": "El Danubio Azul"
+    },
+    {
+        "address": {
+            "coord": [
+                "-58.228779", 
+                "-32.483041"
+            ],
+            "street": "Erausquin 18",
+            "zipcode": "3260"
+        },
+        "borough": "Concepción del Uruguay",
+        "cuisine": "American",
+        "name": "Dolores Costa"
+    },
+    {
+        "address": {
+            "coord": [
+                "-58.233352",
+                "-32.487633"
+            ],
+            "street": "España 193",
+            "zipcode": "3260"
+        },
+        "borough": "Concepción del Uruguay",
+        "cuisine": "American",
+        "name": "Garifo"
+    },
+    {
+        "address": {
+            "coord": [
+                "-58.231646", 
+                "-32.482617"
+            ],
+            "street": "Eva Duarte de Perón 113",
+            "zipcode": "3260"
+        },
+        "borough": "Concepción del Uruguay",
+        "cuisine": "American",
+        "name": "Restaurante Carlos 1°"
+    },
+    {
+        "address": {
+            "coord": [
+                "-58.225398",
+                "-32.478049"
+            ],
+            "street": "Antártida Argentina 296-302",
+            "zipcode": "3260"
+        },
+        "borough": "Concepción del Uruguay",
+        "cuisine": "American",
+        "name": "Pizza&Love"
+    },
+    {
+        "address": {
+            "coord": [
+                "-58.259354",
+                "-32.488939"
+            ],
+            "street": "Dr. Isaac Stilman 44",
+            "zipcode": "3260"
+        },
+        "borough": "Concepción del Uruguay",
+        "cuisine": "American",
+        "name": "Parrilla El Monumento"
+    },
+    {
+        "address": {
+            "coord": [
+                "-58.232942", 
+                "-32.483475"
+            ],
+            "street": "Galarza 750",
+            "zipcode": "3260"
+        },
+        "borough": "Concepción del Uruguay",
+        "cuisine": "American",
+        "name": "La Ris"
+    },
+    {
+        "address": {
+            "coord": [
+                "-58.231815",
+                "-32.481644"
+            ],
+            "street": "Eva Duarte de Perón 190-198",
+            "zipcode": "3260"
+        },
+        "borough": "Concepción del Uruguay",
+        "cuisine": "American",
+        "name": "Casa Nostra"
+    },
+    {
+        "address": {
+            "coord": [
+                "-58.233965", 
+                "-32.480927"
+            ],
+            "street": "Bartolomé Mitre 764",
+            "zipcode": "3260"
+        },
+        "borough": "Concepción del Uruguay",
+        "cuisine": "American",
+        "name": "Nativo Bar Restó"
+    }
+]

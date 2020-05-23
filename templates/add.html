@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block body%}
+    <div class="row justify-content-md-center">
+        <div class="col-md-12">
+            <h1 class="display-4">Add a Restaurant</h1>
+            <hr style="border-top: 1px solid #8c8b8b;">
+        </div>
+        <div class="col-md-12 pt-4 pb-4">
+            <form method="POST" action="/add" class="text-center">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">  
+                            <label for="name">Name </label> 
+                            <input class="form-control border border-light" id="name" type="text" name="name" required>
+                        </div>
+                        <div class="form-group ">  
+                            <label for="cuisine">Cuisine </label> 
+                            <input class="form-control border border-light" id="cuisine" type="text" name="cuisine" required>
+                        </div>
+                        <div class="form-group">  
+                            <label for="city">Borough </label> 
+                            <input class="form-control border border-light" type="text" id="city" name="borough"  required>
+                        </div>
+                        <div class="form-group ">
+                            <label for="street">Street </label>  
+                            <input id="street" class="form-control border border-light" name="street" required>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group ">  
+                            <label for="zip">Zip Code </label> 
+                            <input class="form-control border border-light" type="number" id="zip" name="zipcode" required>
+                        </div>
+                        <div class="form-group ">  
+                            <label for="latitude">Latitude </label> 
+                            <input class="form-control border border-light" step="any" type="number" id="latitude" name="latitude" required>
+                        </div>
+                        <div class="form-group">  
+                            <label for="longitude">Longitude </label> 
+                            <input class="form-control border border-light" step="any" type="number" id="longitude" name="longitude" required>
+                        </div>
+                    </div> 
+                </div>
+                <div class="row pt-2">
+                    <div class="col-md-5" style="margin-left: 250px;">
+                        <button type="submit" class="btn btn-success btn-lg"> Add </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

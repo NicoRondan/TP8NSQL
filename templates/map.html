@@ -1,0 +1,75 @@
+<script type="text/javascript">
+    //Función para mapear tipos de restaurantes por colores
+    //Nota: tuve que poner este script en un html y no en un archivo js para poder manipular los restaurantes que están en jinja
+    function colorMarker(type) {
+        var url;
+        switch (type) {
+            case "Irish":
+                url ='https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png';
+                break;
+            case "Chinese":
+                url ='https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png';
+                break;
+            case "American":
+                url ='https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-black.png';
+                break;
+            case "French":
+                url ='https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png';
+                break;
+            case "Mexican":
+                url ='https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png';
+                break;
+            case "Peruvian":
+                url ='https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-yellow.png';
+                break;
+            case "Japanese":
+                url ='https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png';
+                break;
+            default:
+                url ='https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png';
+                break;
+        }
+        return url;
+    };
+    //Extraer lista de restaurantes
+    var restaurants = $("#mymap").data("restaurants");
+
+    //Crear mapa de nueva york
+    var map = L.map('mymap').setView([40.7142715, -74.0059662], 13);
+    
+    L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    subdomains: ['a','b','c']
+    }).addTo( map );
+
+    //Declarar grupo de clusters
+    var markerClusters = L.markerClusterGroup();
+    
+    for ( var i = 0; i < restaurants.length; ++i )
+    {
+        if ((restaurants[i].address.coord[0]) && (restaurants[i].address.coord[1])){
+            var popup = restaurants[i].name +
+                '<br/><b>City:</b> ' + restaurants[i].borough +
+                '<br/><b>Street:</b> ' + restaurants[i].address.street +
+                '<br/><b>Cuisine:</b> ' + restaurants[i].cuisine +
+                `<br/><a href='/restaurant/${restaurants[i].id}'>More Details</a>`
+            
+            //Crear icono
+            var myIcon = L.icon({
+                iconUrl: colorMarker(restaurants[i].cuisine),
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                iconSize: [25, 41],
+                iconAnchor: [12, 41],
+                popupAnchor: [1, -34],
+                shadowSize: [41, 41]
+              });
+
+            var m = L.marker( [restaurants[i].address.coord[1],restaurants[i].address.coord[0]], {icon: myIcon} )
+                            .bindPopup( popup );
+
+            markerClusters.addLayer( m );
+        }
+    }
+    map.addLayer( markerClusters );    
+
+</script>

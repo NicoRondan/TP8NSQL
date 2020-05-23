@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block body%}
+    <div class="row justify-content-md-center">
+    <div class="col-md-12">
+        <h1 class="display-4">Restaurants</h1>
+        <hr style="border-top: 1px solid #8c8b8b;">
+    </div>
+    <div class="col-md-3 pt-4">
+        {% include 'filter.html' %}
+    </div>
+    <div class="col-md-9 pt-4 pb-3">
+        <div id="mymap" data-restaurants='{{restaurants|tojson}}' style="width: 110%; height: 700px; border: 1px solid #AAA;"></div>
+    </div>
+    </div>
+    {% include 'map.html' %}
+{% endblock %}

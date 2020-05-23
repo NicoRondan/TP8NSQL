@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block body%}
+    <h1>Leaflet Cluster Example</h1>
+
+    <p>Here's an interactive map indicating where airports and train stations are located around the world.  The data comes from <a href="http://openflights.org/data.html" target="_blank">OpenFlights.org</a>.
+
+    <div id="map" style="height: 720px; border: 1px solid #AAA;"></div>
+    
+    <script type='text/javascript' src="{{ url_for('static', filename='js/markers.js') }}"></script>
+    <script type='text/javascript' src="{{ url_for('static', filename='js/leaf-demo.js') }}"></script>
+{% endblock %}
