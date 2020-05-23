@@ -1,11 +1,10 @@
 from pymongo import MongoClient
 import json
-from bson import json_util
 from bson.objectid import ObjectId
 
 def connect_db():
     try:
-        client = MongoClient(host='localhost', port=27017)
+        client = MongoClient(host='db', port=27017)
         db = client["restaurants"]
         return db
     except Exception as err:
