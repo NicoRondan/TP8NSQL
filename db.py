@@ -1,78 +1,72 @@
-from pymongo import MongoClient
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
 import json
-from bson.objectid import ObjectId
 
-def connect_db():
-    try:
-        client = MongoClient(host='db', port=27017)
-        db = client["restaurants"]
-        return db
-    except Exception as err:
-        print("An exception occurred :", err)
+# Use a service account
+cred = credentials.Certificate('key.json')
+firebase_admin.initialize_app(cred)
+
+#connection
+db = firestore.client()
     
 def initialize():
-    db = connect_db()
-    if db.restaurants.count() == 0:
-        try:
-            #Insertar archivos json contenidos en restaurants.json
-            with open('restaurants.json', "r", encoding='utf-8') as file:
-                data = json.load(file)
-            db.restaurants.insert_many(data)
-            with open('restaurants_concepcion.json', "r", encoding='utf-8') as file:
-                data = json.load(file)
-            db.restaurants.insert_many(data)
-        except Exception as err:
-            print("An exception occurred :", err)
+    restaurants = db.collection('restaurants')
+    #Insertar archivos json contenidos en restaurants.json
+    with open('restaurants.json', "r", encoding='utf-8') as file:
+        data = json.load(file)
+        for i in range (0,483):
+            restaurants.add(data[i])
+    with open('restaurants_concepcion.json', "r", encoding='utf-8') as file:
+        data = json.load(file)
+        for i in range (0,17):
+            restaurants.add(data[i])  
+
             
 def get_restaurants():
-    db = connect_db()
-    data = db.restaurants.find({},{"_id":1,"name":2,"borough":3,"address":4,"cuisine":5})
+    data = db.collection('restaurants').stream()
     restaurants = []
     for item in data:
-        #Evitar problema del objectId al mapear en el front
-        item["id"] = str(item["_id"])
-        #Eliminamos del diccionario
-        item.pop('_id')
-        restaurants.append(item)
+        document = item.to_dict()
+        document['id'] = item.id
+        restaurants.append(document)
     return restaurants 
 
 def get_types():
-    db = connect_db()
     #Obtener tipos de restaurantes (no repetidos)
-    data = db.restaurants.distinct("cuisine")
-    restaurants = []
+    data = db.collection('restaurants').stream()
+    types = []
     for item in data:
-        restaurants.append(item)
-    return restaurants
+        document = item.to_dict()
+        if (document["cuisine"] not in types):
+            types.append(document["cuisine"])
+    return types
 
 def get_restaurants_per_type(type):
-    db = connect_db()
     restaurants = []
-    data = db.restaurants.find({ "cuisine":{ "$regex": type }}, { "_id":1,"name":2,"borough":3,"address":4,"cuisine":5 })
+    data = db.collection('restaurants').where('cuisine','==', type).stream()
     for item in data:
-        #Evitar problema del objectId al mapear en el front
-        item["id"] = str(item["_id"]) 
-        item.pop('_id')
-        restaurants.append(item) 
+        document = item.to_dict()
+        document['id'] = item.id
+        restaurants.append(document)
     return restaurants 
 
 def get_restaurant(id):
-    db = connect_db()
     #Buscar en la bbdd
-    restaurant = db.restaurants.find_one({'_id': ObjectId(id)})
-    #Evitar problema del objectId al mapear en el front
-    restaurant["id"] = str(restaurant["_id"]) 
-    restaurant.pop('_id')
+    restaurants = db.collection('restaurants')
+    document = restaurants.document(id).get()
+    restaurant = document.to_dict()
+    restaurant['id'] = document.id
     return restaurant
 
 def add_restaurant(restaurant):
-    db = connect_db()
-    db.restaurants.insert_one(restaurant)
+    restaurants = db.collection('restaurants')
+    restaurants.add(restaurant)
 
 def update_restaurant(restaurant, id):
-    db = connect_db()
-    db.restaurants.update_one({'_id': ObjectId(id)}, {'$set': restaurant }) 
+    restaurants = db.collection('restaurants')
+    restaurants.document(id).update(restaurant)
     
 def delete_restaurant(id):
-    db = connect_db()
-    db.restaurants.delete_one({'_id': ObjectId(id)})
+    restaurants = db.collection('restaurants')
+    restaurants.document(id).delete()

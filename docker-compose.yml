@@ -7,11 +7,4 @@ services:
       - "5000:5000"
     volumes:
       - .:/src
-    depends_on:
-      - "db"
   
-  db:
-    container_name: 'mongodb_clustering'
-    image: mongo
-    ports:
-      - '27017:27017'

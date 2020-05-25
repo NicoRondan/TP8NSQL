@@ -1,15 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify, Response, flash
-from db import initialize, get_restaurants, get_restaurant, get_types, get_restaurants_per_type, add_restaurant, update_restaurant, delete_restaurant
+from db import get_restaurants, get_restaurant, get_types, get_restaurants_per_type, add_restaurant, update_restaurant, delete_restaurant
 
 app = Flask(__name__)
 
 """Clave necesaria para poder utilizar flash"""
 app.secret_key = 'clave_secreta'
-
-@app.route('/initialize_db', methods=['GET'])
-@app.before_first_request
-def initialize_db():
-    initialize()
 
 @app.route('/about', methods=['GET'])
 def about():
@@ -133,4 +128,4 @@ def not_found(error=None):
 
 
 if __name__ == "__main__":
-    app.run(host='src', port='5000', debug=True)
+    app.run(host='localhost', port='5000', debug=True)
